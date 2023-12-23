@@ -20,10 +20,11 @@
           </div>
           <%# ログインしているときは以下を表示するようにしましょう %>
            <% if user_signed_in? %>
-            <% <div class="nav__right"> %>
-              <% <%= link_to "ログアウト", destroy_user_session_path, class: :nav__logout %>
-              <% <%= link_to "New Proto", root_path, class: :nav__btn %>
-            <% </div> %>
+            <div class="nav__right"> 
+              <p>こんにちは <%= current_user.name %> さん</p>
+              <%= link_to "ログアウト", destroy_user_session_path, class: :nav__logout %>
+              <%= link_to "New Proto", root_path, class: :nav__btn %>
+            </div> 
            <% else %> 
           <%# // ログインしているときは上記を表示するようにしましょう %>
           <%# ログインしていないときは以下を表示するようにしましょう %>
