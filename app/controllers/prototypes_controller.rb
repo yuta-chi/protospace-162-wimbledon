@@ -2,7 +2,7 @@ class PrototypesController < ApplicationController
   before_action :move_to_signin, except: [:create, :index]
 
   def index
-
+    @prototypes = Prototype.all
   end
 
   def new
