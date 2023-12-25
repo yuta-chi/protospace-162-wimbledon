@@ -4,16 +4,22 @@ class PrototypesController < ApplicationController
   end
 
   def new
-    
+    @prototype = Prototype.new
   end
 
   def create
+    @prototype = Prototype.new(prototype_params)
+    if @prototype.save
+      redirect_to '/'
+    else
+      render :new
+    end
+  end
 
-  end
-  
-  
-  
+  private
+
   def prototype_params
-    params.require(:prototype).permit(:content, :image).merge(user_id: current_user.id)
+    params.require(:prototype).permit(:title, :catch_copy, :concept).merge(user_id: current_user.id)
   end
+
 end
