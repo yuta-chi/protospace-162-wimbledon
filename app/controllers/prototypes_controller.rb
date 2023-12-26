@@ -1,5 +1,5 @@
 class PrototypesController < ApplicationController
-  before_action :move_to_signin, except: [:create, :index]
+  before_action :move_to_signin, except: [:create, :index, :show]
 
   def index
     @prototypes = Prototype.all
@@ -16,6 +16,11 @@ class PrototypesController < ApplicationController
     else
       render 'new', status: :unprocessable_entity
     end
+  end
+
+  def show
+    prototype_id = params[:id]
+    @prototype = Prototype.find(prototype_id)
   end
 
   private
